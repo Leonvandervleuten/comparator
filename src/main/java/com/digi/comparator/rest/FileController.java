@@ -1,6 +1,6 @@
 package com.digi.comparator.rest;
 
-import com.digi.comparator.service.CompareService;
+import com.digi.comparator.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,10 +10,10 @@ import java.io.IOException;
 
 
 @RestController
-public class CompareController {
+public class FileController {
 
   @Autowired
-  private CompareService compareService;
+  private FileService compareService;
 
   @PostMapping("/compare")
   public void compareCSVFile(@RequestParam("csv") MultipartFile csv) throws IOException {
