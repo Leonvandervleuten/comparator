@@ -20,13 +20,5 @@ public class CsvFileService {
     CsvFile rowFromDB = csvFileRepository.getCsvFileByFileName(fileName);
     return rowFromDB.getId();
   }
-
-  //  public void findDuplicatesFromList(List<String> input) {
-  //    for (int i = 0; i < input.size(); i++) {
-  //      if (input.get(i).contains("316")) {
-  //        System.out.println("aanwezig");
-  //      }
-  //    }
-  //  }
 }
 
