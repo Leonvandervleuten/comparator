@@ -2,7 +2,6 @@ package com.digi.comparator.service;
 
 import com.digi.comparator.domain.CsvFile;
 import com.digi.comparator.domain.SearchElements;
-import com.digi.comparator.repository.CsvFileRepository;
 import com.digi.comparator.repository.SearchElementsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,6 @@ public class ElementsService {
 
   @Autowired
   private SearchElementsRepository searchElementsRepository;
-
-  @Autowired
-  private CsvFileRepository csvFileRepository;
 
   private List<String> fromCsvToList(MultipartFile csv) throws IOException {
     byte[] bytes = csv.getBytes();
