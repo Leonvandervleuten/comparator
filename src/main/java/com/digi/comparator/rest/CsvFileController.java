@@ -3,6 +3,7 @@ package com.digi.comparator.rest;
 import com.digi.comparator.service.CsvFileService;
 import com.digi.comparator.service.ElementsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,11 +21,17 @@ public class CsvFileController {
   private ElementsService elementsService;
 
   @PostMapping("/compare")
-  public void compareCSVFile(@RequestParam("csv") MultipartFile csv) throws IOException {
+  public void saveCsvToDB(@RequestParam("csv") MultipartFile csv) throws IOException {
     if (!csv.isEmpty()) {
       Long csvId = csvFileService.addFileNameToH2DB(csv);
       elementsService.addSearchElementsToH2DB(csv, csvId);
-
     }
   }
+
+  @GetMapping("/compare")
+  public void compareFilesFromDb(){
+
+  }
+
+
 }
