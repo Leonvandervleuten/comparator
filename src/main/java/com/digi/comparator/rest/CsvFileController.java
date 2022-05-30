@@ -23,7 +23,7 @@ public class CsvFileController {
   @PostMapping("/compare")
   public void saveCsvToDB(@RequestParam("csv") MultipartFile csv) throws IOException {
     if (!csv.isEmpty()) {
-      Long csvId = csvFileService.addFileNameToH2DB(csv);
+      Long csvId = csvFileService.addFileNameToH2DBAndReturnId(csv);
       elementsService.addSearchElementsToH2DB(csv, csvId);
     }
   }

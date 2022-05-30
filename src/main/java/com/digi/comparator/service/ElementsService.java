@@ -38,4 +38,9 @@ public class ElementsService {
       }
     }
   }
+
+  public List<SearchElements> findAllSearchElements(){
+    return searchElementsRepository.findAll();
+
+  }
 }
