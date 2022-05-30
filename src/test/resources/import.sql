@@ -1,0 +1,32 @@
+-- CsvFile
+insert into csv_file(file_name) values ('filenaam1.csv')
+insert into csv_file(file_name) values ('filenaam2.csv')
+insert into csv_file(file_name) values ('filenaam3.csv')
+insert into csv_file(file_name) values ('filenaam4.csv')
+insert into csv_file(file_name) values ('filenaam5.csv')
+insert into csv_file(file_name) values ('filenaam6.csv')
+insert into csv_file(file_name) values ('filenaam7.csv')
+insert into csv_file(file_name) values ('filenaam8.csv')
+insert into csv_file(file_name) values ('filenaam9.csv')
+insert into csv_file(file_name) values ('filenaam10.csv')
+insert into csv_file(file_name) values ('filenaam11.csv')
+insert into csv_file(file_name) values ('filenaam12.csv')
+
+-- searchElements
+insert into search_elements(element, csv_file_id) values(0612345678, 1)
+insert into search_elements(element, csv_file_id) values(061234567823432432, 2)
+insert into search_elements(element, csv_file_id) values('+_)(*^%#@@%&*((*&%$#{}{:>>})', 3)
+insert into search_elements(element, csv_file_id) values('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum nunc quis dolor imperdiet luctus. Suspendisse vehicula, turpis eget rutrum sollicitudin, erat nibh molestie mi, in pretium nisl felis ut justo. Proin maximus ullamcorper tempus turpis.', 1)
+insert into search_elements(element, csv_file_id) values(12344, 4)
+
+insert into search_elements(element, csv_file_id) values(0612345678, 5)
+insert into search_elements(element, csv_file_id) values(061234567823432432, 6)
+insert into search_elements(element, csv_file_id) values('+_)(*^%#@@%&*((*&%$#{}{:>>})', 7)
+insert into search_elements(element, csv_file_id) values('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum nunc quis dolor imperdiet luctus. Suspendisse vehicula, turpis eget rutrum sollicitudin, erat nibh molestie mi, in pretium nisl felis ut justo. Proin maximus ullamcorper tempus turpis.', 1)
+insert into search_elements(element, csv_file_id) values(12344, 8)
+
+insert into search_elements(element, csv_file_id) values(0612345678, 9)
+insert into search_elements(element, csv_file_id) values(061234567823432432, 10)
+insert into search_elements(element, csv_file_id) values('+_)(*^%#@@%&*((*&%$#{}{:>>})', 11)
+insert into search_elements(element, csv_file_id) values('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum nunc quis dolor imperdiet luctus. Suspendisse vehicula, turpis eget rutrum sollicitudin, erat nibh molestie mi, in pretium nisl felis ut justo. Proin maximus ullamcorper tempus turpis.', 1)
+insert into search_elements(element, csv_file_id) values(12344, 12)
