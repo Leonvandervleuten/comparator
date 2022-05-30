@@ -44,6 +44,6 @@ public class SearchElementsService {
   }
 
   public void getSearchElementsByCSVFileId(){
-    List<SearchElements> listje = searchElementsRepository.getSearchElementsByCsvFile_Id(1L);
+    List<SearchElements> listByCsvFileId = searchElementsRepository.getSearchElementsByCsvFile_Id(1L);
   }
 }
