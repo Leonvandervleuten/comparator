@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ElementsService {
+public class SearchElementsService {
 
   @Autowired
   private SearchElementsRepository searchElementsRepository;
@@ -41,6 +41,9 @@ public class ElementsService {
 
   public List<SearchElements> findAllSearchElements(){
     return searchElementsRepository.findAll();
+  }
 
+  public void getSearchElementsByCSVFileId(){
+    List<SearchElements> listje = searchElementsRepository.getSearchElementsByCsvFile_Id(1L);
   }
 }

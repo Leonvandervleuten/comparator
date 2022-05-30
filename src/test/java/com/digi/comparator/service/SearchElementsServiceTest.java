@@ -12,21 +12,21 @@ import java.io.IOException;
 import java.util.List;
 
 @SpringBootTest
-class ElementsServiceTest {
+class SearchElementsServiceTest {
 
   @Autowired
-  private ElementsService elementsService;
+  private SearchElementsService searchElementsService;
 
   @Test
   void addSearchElementsToH2DB() throws IOException {
     //Arrange
     FileInputStream inputFile = new FileInputStream("src/test/resources/TestCSV.csv");
     MockMultipartFile file = new MockMultipartFile("csv", "TestCSV.csv", "text/csv", inputFile);
-    List<SearchElements> beforeAddingAllSearchElements = elementsService.findAllSearchElements();
+    List<SearchElements> beforeAddingAllSearchElements = searchElementsService.findAllSearchElements();
 
     //Act
-    elementsService.addSearchElementsToH2DB(file, 1L);
-    List<SearchElements> afterAddingAllSearchElements = elementsService.findAllSearchElements();
+    searchElementsService.addSearchElementsToH2DB(file, 1L);
+    List<SearchElements> afterAddingAllSearchElements = searchElementsService.findAllSearchElements();
 
     //Assert
     Assertions.assertEquals(afterAddingAllSearchElements.size(), beforeAddingAllSearchElements.size() + 61);

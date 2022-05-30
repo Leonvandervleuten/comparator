@@ -1,7 +1,7 @@
 package com.digi.comparator.rest;
 
 import com.digi.comparator.service.CsvFileService;
-import com.digi.comparator.service.ElementsService;
+import com.digi.comparator.service.SearchElementsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,20 +18,19 @@ public class CsvFileController {
   private CsvFileService csvFileService;
 
   @Autowired
-  private ElementsService elementsService;
+  private SearchElementsService searchElementsService;
 
   @PostMapping("/compare")
   public void saveCsvToDB(@RequestParam("csv") MultipartFile csv) throws IOException {
     if (!csv.isEmpty()) {
       Long csvId = csvFileService.addFileNameToH2DBAndReturnId(csv);
-      elementsService.addSearchElementsToH2DB(csv, csvId);
+      searchElementsService.addSearchElementsToH2DB(csv, csvId);
     }
   }
 
   @GetMapping("/compare")
-  public void compareFilesFromDb(){
-
+  public void compareFilesFromDb() {
+    searchElementsService.getSearchElementsByCSVFileId();
   }
-
 
 }
