@@ -30,7 +30,8 @@ public class CsvFileController {
 
   @GetMapping("/compare")
   public void compareFilesFromDb() {
-    searchElementsService.getSearchElementsByCSVFileId();
+    searchElementsService.compareElementsFromDB();
+
   }
 
 }

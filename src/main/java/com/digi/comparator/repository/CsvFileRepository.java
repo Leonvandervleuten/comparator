@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface CsvFileRepository extends JpaRepository<CsvFile, Long> {
 
   CsvFile getCsvFileByFileName(String s);
+
 }
