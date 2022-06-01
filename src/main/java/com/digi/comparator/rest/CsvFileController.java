@@ -1,5 +1,6 @@
 package com.digi.comparator.rest;
 
+import com.digi.comparator.domain.SearchElements;
 import com.digi.comparator.service.CsvFileService;
 import com.digi.comparator.service.SearchElementsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 @RestController
 public class CsvFileController {
@@ -29,8 +31,8 @@ public class CsvFileController {
   }
 
   @GetMapping("/compare")
-  public void compareFilesFromDb() {
-    searchElementsService.getSearchElementsByCSVFileId();
+  public HashSet<SearchElements> compareFilesFromDb() {
+    return searchElementsService.compareElementsFromDB();
   }
 
 }
