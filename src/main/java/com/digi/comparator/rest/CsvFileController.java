@@ -35,4 +35,10 @@ public class CsvFileController {
     return searchElementsService.compareElementsFromDB();
   }
 
+  @GetMapping("compare/delete")
+  public void deleteDB(){
+    searchElementsService.deleteAllElements();
+    csvFileService.deleteAllCsvFiles();
+  }
+
 }
