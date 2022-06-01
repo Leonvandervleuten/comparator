@@ -39,7 +39,6 @@ public class SearchElementsService {
 
     for (String element : elementList) {
       if (!element.isEmpty()) {
-        element.replace("", "inkomend");
         SearchElements searchElements = new SearchElements();
         searchElements.setElement(element);
         searchElements.setCsvFile(csvFile);
