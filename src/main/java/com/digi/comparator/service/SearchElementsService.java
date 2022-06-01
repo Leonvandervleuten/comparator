@@ -28,7 +28,7 @@ public class SearchElementsService {
   private List<String> fromCsvToList(MultipartFile csv) throws IOException {
     byte[] bytes = csv.getBytes();
     String csvString = new String(bytes);
-    String adjustedCsvString = csvString.replaceAll("\r\n", "");
+    String adjustedCsvString = csvString.replaceAll("\r\n", ";");
     return new ArrayList<>(Arrays.asList(adjustedCsvString.split(";")));
   }
 
@@ -52,7 +52,7 @@ public class SearchElementsService {
     return searchElementsRepository.findAll();
   }
 
-  public void compareElementsFromDB() {
+  public HashSet<SearchElements> compareElementsFromDB() {
     int totalCsvFiles = csvFileRepository.findAll().size();
     for (int i = 1; i <= totalCsvFiles; i++) {
       List<SearchElements> searchElementsHead = getSearchElementsByCSVFileId((long) i);
@@ -64,17 +64,14 @@ public class SearchElementsService {
           for (SearchElements headElement : searchElementsHead) {
             for (SearchElements slaveElement : searchElementsSlave) {
               if (headElement.getElement().contains(slaveElement.getElement())) {
-                matchMaker(headElement);
+                matchMaker(slaveElement);
               }
             }
           }
         }
       }
     }
-    for (SearchElements element : matchList) {
-      System.out.println(element.getElement());
-      System.out.println(element.getCsvFile().getFileName());
-    }
+    return matchList;
   }
 
   private List<SearchElements> getSearchElementsByCSVFileId(Long id) {
