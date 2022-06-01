@@ -82,4 +82,9 @@ public class SearchElementsService {
       matchList.add(element);
     }
   }
+
+  public String deleteAllElements(){
+    searchElementsRepository.deleteAll();
+    return "All Search Elements Deleted";
+  }
 }

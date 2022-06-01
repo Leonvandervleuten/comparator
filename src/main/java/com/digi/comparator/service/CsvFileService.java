@@ -26,5 +26,10 @@ public class CsvFileService {
   public List<CsvFile> findAllCsvFiles(){
     return csvFileRepository.findAll();
   }
+
+  public String deleteAllCsvFiles(){
+    csvFileRepository.deleteAll();
+    return "All CsvFiles deleted";
+  }
 }
 
