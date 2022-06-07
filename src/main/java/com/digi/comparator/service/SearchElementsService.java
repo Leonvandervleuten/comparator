@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class SearchElementsService {
@@ -39,13 +40,32 @@ public class SearchElementsService {
 
     for (String element : elementList) {
       if (!element.isEmpty()) {
-        SearchElements searchElements = new SearchElements();
-        searchElements.setElement(element);
-        searchElements.setCsvFile(csvFile);
-        searchElementsRepository.save(searchElements);
+        SearchElements testje = searchElementsRepository.findByElement(element);
+        if (testje != null) {
+          Set<CsvFile> csvFileList = new HashSet<>();
+          for (CsvFile existedCsv : testje.getCsvFile()){
+            csvFileList.add(existedCsv);
+          }
+          csvFileList.add(csvFile);
+          testje.setCsvFile(csvFileList);
+          searchElementsRepository.save(testje);
+        }
+        else {
+          SearchElements searchElements = new SearchElements();
+          Set<CsvFile> csvFileList = new HashSet<>();
+          csvFileList.add(csvFile);
+          searchElements.setElement(element);
+          searchElements.setCsvFile(csvFileList);
+          searchElementsRepository.save(searchElements);
+        }
+
       }
     }
   }
+
+  //  public boolean checkIfSearchElementExistsInDB(String element){
+  //
+  //  }
 
   public List<SearchElements> findAllSearchElements() {
     return searchElementsRepository.findAll();
@@ -83,7 +103,7 @@ public class SearchElementsService {
     }
   }
 
-  public String deleteAllElements(){
+  public String deleteAllElements() {
     searchElementsRepository.deleteAll();
     return "All Search Elements Deleted";
   }

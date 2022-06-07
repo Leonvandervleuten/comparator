@@ -36,24 +36,24 @@ class SearchElementsServiceTest {
 
   }
 
-  @Test
-  void compareElementsFromDB() {
-    //Arrange
-    SearchElements assertElement = new SearchElements();
-    assertElement.setElement("0612345678");
-    assertElement.setId(1L);
-    CsvFile csvFile = new CsvFile();
-    csvFile.setFileName("filenaam1.csv");
-    csvFile.setId(1L);
-    assertElement.setCsvFile(csvFile);
-
-    //Act
-    HashSet<SearchElements> matches = searchElementsService.compareElementsFromDB();
-    ArrayList<SearchElements> arrayMatches = new ArrayList<>(matches);
-    SearchElements elementResult = arrayMatches.get(0);
-
-    //Assert
-    Assertions.assertEquals(assertElement.getElement(), elementResult.getElement());
-
-  }
+//  @Test
+//  void compareElementsFromDB() {
+//    //Arrange
+//    SearchElements assertElement = new SearchElements();
+//    assertElement.setElement("0612345678");
+//    assertElement.setId(1L);
+//    CsvFile csvFile = new CsvFile();
+//    csvFile.setFileName("filenaam1.csv");
+//    csvFile.setId(1L);
+//    assertElement.setCsvFile(csvFile);
+//
+//    //Act
+//    HashSet<SearchElements> matches = searchElementsService.compareElementsFromDB();
+//    ArrayList<SearchElements> arrayMatches = new ArrayList<>(matches);
+//    SearchElements elementResult = arrayMatches.get(0);
+//
+//    //Assert
+//    Assertions.assertEquals(assertElement.getElement(), elementResult.getElement());
+//
+//  }
 }

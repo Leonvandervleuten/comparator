@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 
 @RestController
 public class CsvFileController {
@@ -39,6 +40,11 @@ public class CsvFileController {
   public void deleteDB(){
     searchElementsService.deleteAllElements();
     csvFileService.deleteAllCsvFiles();
+  }
+
+  @GetMapping("compare/all")
+  public List<SearchElements> getAllElements(){
+    return searchElementsService.findAllSearchElements();
   }
 
 }
