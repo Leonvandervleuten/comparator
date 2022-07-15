@@ -4,6 +4,7 @@ import com.digi.comparator.domain.SearchElements;
 import com.digi.comparator.service.CsvFileService;
 import com.digi.comparator.service.SearchElementsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ public class CsvFileController {
   @Autowired
   private SearchElementsService searchElementsService;
 
+  @CrossOrigin
   @PostMapping("/compare")
   public void saveCsvToDB(@RequestParam("csv") MultipartFile csv) throws IOException {
     if (!csv.isEmpty()) {
@@ -31,19 +33,22 @@ public class CsvFileController {
     }
   }
 
+  @CrossOrigin
   @GetMapping("/compare")
   public HashSet<SearchElements> compareFilesFromDb() {
     return searchElementsService.compareElementsFromDB();
   }
 
+  @CrossOrigin
   @GetMapping("compare/delete")
-  public void deleteDB(){
+  public void deleteDB() {
     searchElementsService.deleteAllElements();
     csvFileService.deleteAllCsvFiles();
   }
 
+  @CrossOrigin
   @GetMapping("compare/all")
-  public List<SearchElements> getAllElements(){
+  public List<SearchElements> getAllElements() {
     return searchElementsService.findAllSearchElements();
   }
 

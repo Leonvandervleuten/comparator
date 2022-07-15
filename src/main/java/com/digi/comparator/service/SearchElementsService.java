@@ -63,10 +63,6 @@ public class SearchElementsService {
     }
   }
 
-  //  public boolean checkIfSearchElementExistsInDB(String element){
-  //
-  //  }
-
   public List<SearchElements> findAllSearchElements() {
     return searchElementsRepository.findAll();
   }
