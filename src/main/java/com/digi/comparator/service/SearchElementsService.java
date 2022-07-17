@@ -26,7 +26,7 @@ public class SearchElementsService {
 
   private HashSet<SearchElements> matchList = new HashSet<>();
 
-  private List<String> fromCsvToList(MultipartFile csv) throws IOException {
+  public List<String> fromCsvToList(MultipartFile csv) throws IOException {
     byte[] bytes = csv.getBytes();
     String csvString = new String(bytes);
     String adjustedCsvString = csvString.replaceAll("\r\n", ";");

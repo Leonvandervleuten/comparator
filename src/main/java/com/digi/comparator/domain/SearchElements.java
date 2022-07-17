@@ -5,15 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Set;
 
@@ -30,6 +30,11 @@ public class SearchElements {
 
   @Column(columnDefinition="TEXT")
   private String element;
+
+  @ElementCollection
+  @CollectionTable(name = "my_list", joinColumns = @JoinColumn(name = "id"))
+  @Column(name = "list")
+  private List<String> list;
 
   @ManyToMany
   private Set<CsvFile> csvFile;

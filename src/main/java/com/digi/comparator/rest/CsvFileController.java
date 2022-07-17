@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -35,32 +36,32 @@ public class CsvFileController {
   @Autowired
   private RabbitTemplate template;
 
-//  @CrossOrigin
-//  @PostMapping("/compare")
-//  public String publishMessage(@RequestBody CustomMessage message) {
-//    message.setMessageId(UUID.randomUUID().toString());
-//    message.setMessageDate(new Date());
-//    template.convertAndSend(MqConfig.EXCHANGE,
-//        MqConfig.ROUTING_KEY, message);
-//
-//    return "Message Published";
-//  }
+  //  @CrossOrigin
+  //  @PostMapping("/compare")
+  //  public String publishMessage(@RequestBody CustomMessage message) {
+  //    message.setMessageId(UUID.randomUUID().toString());
+  //    message.setMessageDate(new Date());
+  //    message.setMessage(message.getMessage());
+  //    template.convertAndSend(MqConfig.EXCHANGE,
+  //        MqConfig.ROUTING_KEY, message);
+  //
+  //    return "Message Published";
+  //  }
 
   @CrossOrigin
   @PostMapping("/compare")
   public void saveCsvToDB(@RequestParam("csv") MultipartFile csv) throws IOException {
-    byte[] fileData = csv.getBytes();
-    String fileType = csv.getContentType();
-    Message message = MessageBuilder.withBody(fileData).setHeader("ContentType", fileType).build();
+    SearchElements searchElements = new SearchElements();
+    List<String> stringList = searchElementsService.fromCsvToList(csv);
+    searchElements.setList(stringList);
+
         template.convertAndSend(MqConfig.EXCHANGE,
-            MqConfig.ROUTING_KEY, message);
+            MqConfig.ROUTING_KEY, searchElements);
 
-
-
-//    if (!csv.isEmpty()) {
-//      Long csvId = csvFileService.addFileNameToH2DBAndReturnId(csv);
-//      searchElementsService.addSearchElementsToH2DB(csv, csvId);
-//    }
+    //    if (!csv.isEmpty()) {
+    //      Long csvId = csvFileService.addFileNameToH2DBAndReturnId(csv);
+    //      searchElementsService.addSearchElementsToH2DB(csv, csvId);
+    //    }
   }
 
   @CrossOrigin

@@ -13,6 +13,9 @@ import java.util.Date;
 @ToString
 public class CustomMessage {
 
-  private String array;
+  private String messageId;
+  private Date MessageDate;
+  private String message;
+
 
 }
